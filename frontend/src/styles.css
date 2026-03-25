@@ -1,0 +1,504 @@
+:root {
+    --bg: #f3f7fb;
+    --panel: #ffffff;
+    --txt: #1e293b;
+    --accent: #2563eb;
+    --danger: #dc2626;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg);
+    color: var(--txt);
+    min-height: 100vh;
+}
+
+.app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.4rem;
+}
+
+.app-description {
+    margin: 0 0 1.2rem;
+    color: #334155;
+    font-size: 1rem;
+    max-width: 820px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.envios-section,
+.clientes-section,
+.pedidos-section,
+.transportistas-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.top-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.bottom-row {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 16px;
+    min-height: 360px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.top-row .panel {
+    animation: fadeSlideIn 0.28s ease;
+}
+
+.bottom-row .panel {
+    animation: riseIn 0.32s ease;
+}
+
+.panel h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: var(--accent);
+    color: white;
+    border-radius: 6px;
+    padding: 8px 12px;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+button.small {
+    margin-left: 8px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #94a3b8;
+}
+
+button.small.edit {
+    background: #2563eb;
+    color: white;
+    border-color: #1d4ed8;
+}
+
+button.small.edit:hover {
+    background: #1d4ed8;
+}
+
+button.small.danger {
+    background: #dc2626;
+    color: white;
+    border-color: #b91c1c;
+}
+
+button.small.danger:hover {
+    background: #b91c1c;
+}
+
+.refresh-btn {
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    font-size: 1rem;
+}
+
+.refresh-btn[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.card {
+    margin-top: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    background: #ffffff;
+    padding: 14px;
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.08);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li+li {
+    margin-top: 8px;
+}
+
+.envios-list,
+.clientes-list,
+.pedidos-list,
+.transportistas-list {
+    margin-top: 8px;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.envio-card,
+.client-card,
+.pedido-card,
+.transportista-card {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f8fafc;
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.envio-card.selected,
+.client-card.selected,
+.pedido-card.selected,
+.transportista-card.selected {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.envio-card:hover,
+.client-card:hover,
+.pedido-card:hover,
+.transportista-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.envio-card .link,
+.client-card .link,
+.pedido-card .link,
+.transportista-card .link,
+.envio-card button,
+.client-card button,
+.pedido-card button,
+.transportista-card button {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    background: transparent;
+    color: #0f172a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.envio-card .link:hover,
+.client-card .link:hover,
+.pedido-card .link:hover,
+.transportista-card .link:hover,
+.envio-card button:hover,
+.client-card button:hover,
+.pedido-card button:hover,
+.transportista-card button:hover {
+    background: none;
+}
+
+.actions {
+    display: flex;
+    gap: 6px;
+}
+
+.envio-list-item,
+.client-list-item,
+.clientes-list-item,
+.pedido-list-item,
+.transportista-list-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    background: #f8fafc;
+}
+
+.envio-list-item:hover,
+.client-list-item:hover,
+.clientes-list-item:hover,
+.pedido-list-item:hover,
+.transportista-list-item:hover {
+    background: #e2e8f8;
+}
+
+.timeline {
+    margin-top: 1rem;
+}
+
+.timeline li {
+    border-left: 3px solid #2563eb;
+    margin-left: 1rem;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.estado-header {
+    font-size: 0.95rem;
+    color: #334155;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-status-card h3 {
+    margin-top: 0;
+}
+
+.form-estado {
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.admin-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.admin-card {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 10px;
+    background: #f8fafc;
+}
+
+.admin-card h3 {
+    margin-top: 0;
+}
+
+.admin-card ul {
+    max-height: 180px;
+    overflow-y: auto;
+    margin: 0;
+    padding-left: 16px;
+}
+
+.admin-card li {
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #94a3b8;
+}
+
+.envio-form-card,
+.cliente-form-card {
+    width: 100%;
+}
+
+.loading {
+    font-style: italic;
+    color: #475569;
+    margin: 12px 0;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin: 12px 0;
+    flex-wrap: wrap;
+}
+
+.tab {
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    color: #0f172a;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+.tab.active {
+    background: #2563eb;
+    color: white;
+    border-color: #1d4ed8;
+}
+
+.feedback {
+    margin-top: 16px;
+    padding: 10px;
+    border-radius: 6px;
+    background: #e2e8f0;
+    animation: fadeSlideIn 0.25s ease;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 20;
+}
+
+.modal {
+    background: white;
+    border-radius: 10px;
+    width: min(480px, 100%);
+    padding: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    animation: scaleIn 0.18s ease;
+}
+
+.modal h3 {
+    margin-top: 0;
+}
+
+.modal-buttons {
+    margin-top: 14px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 900px) {
+    .app {
+        padding: 16px;
+    }
+
+    .admin-sections {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .app {
+        padding: 12px;
+    }
+
+    .top-row {
+        grid-template-columns: 1fr;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .panel {
+        min-height: auto;
+        padding: 14px;
+    }
+
+    .tabs {
+        gap: 8px;
+    }
+
+    .tab {
+        flex: 1 1 calc(50% - 8px);
+        text-align: center;
+    }
+
+    .envio-list-item,
+    .client-list-item,
+    .clientes-list-item,
+    .pedido-list-item,
+    .transportista-list-item {
+        gap: 8px;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .envio-card .link,
+    .client-card .link,
+    .pedido-card .link,
+    .transportista-card .link,
+    .envio-card button,
+    .client-card button,
+    .pedido-card button,
+    .transportista-card button {
+        padding: 8px;
+    }
+
+    .actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .modal {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .form-buttons {
+        flex-wrap: wrap;
+    }
+}

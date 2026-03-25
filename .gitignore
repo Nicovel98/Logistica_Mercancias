@@ -1,0 +1,23 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# Vite
+dist/
+.vite/
+
+# IDE
+.vscode/
+.DS_Store
+
+# Logs
+logs
+*.log
+
+# System
+*.sqlite
+*.sqlite3
+
+# Env
+.env
