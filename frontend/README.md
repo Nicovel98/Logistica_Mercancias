@@ -31,13 +31,15 @@ Por defecto Vite levanta el frontend en `http://localhost:5173`.
 ## Estructura principal
 
 - `src/main.jsx` - punto de entrada de React
-- `src/App.jsx` - UI principal y lógica de vistas (envíos, clientes, pedidos, transportistas)
+- `src/App.jsx` - composición principal de tabs, vistas y modal de confirmación
 - `src/api.js` - cliente HTTP para consumir la API REST (`/api`)
+- `src/components/` - componentes reutilizables y vistas por dominio
+- `src/hooks/` - hooks de datos por dominio + hook orquestador
 - `src/styles.css` - estilos globales y responsive
 
 ## Integración con backend
 
 - Las llamadas REST usan `BASE_URL = '/api'` (archivo `src/api.js`).
-- Socket.IO se conecta a `http://localhost:3000` (archivo `src/App.jsx`).
+- Socket.IO se conecta a `http://localhost:3000` (archivo `src/hooks/useLogisticaData.js`).
 
-Si cambias host/puerto del backend, ajusta la URL del socket en `src/App.jsx` y la configuración de proxy/API según tu entorno.
+Si cambias host/puerto del backend, ajusta la URL del socket en `src/hooks/useLogisticaData.js` y la configuración de proxy/API según tu entorno.

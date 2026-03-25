@@ -6,7 +6,7 @@ Sistema full-stack para la gestión integral y rastreo de envíos en tiempo real
 
 - [Backend](backend/README.md)
 - [Frontend](frontend/README.md)
-- [Ver diagrama de clases (Mermaid)](DIAGRAMA_CLASES.md)
+- [Diagrama de clases (Mermaid)](DIAGRAMA_CLASES.md)
 
 ## 🛠️ Stack Tecnológico
 
